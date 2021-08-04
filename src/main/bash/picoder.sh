@@ -11,4 +11,6 @@ elif [ "$1" == "encode" ]; then
   java -jar ./PiCoder/PiCoder.jar "$1" "$2" "$3" "$4" "$5"
 elif [ "$1" == "decode" ]; then
   java -jar ./PiCoder/PiCoder.jar "$1" "$2" "$3" "$4" "$5"
+elif [ "$1" == "generate-key" ]; then
+  java -jar ./PiCoder/PiCoder.jar "$1" "$2"
 fi
