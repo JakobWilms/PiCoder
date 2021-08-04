@@ -46,7 +46,7 @@ public class KeyGenerator {
         FileOutputStream stream = new FileOutputStream(getFile());
         byte[] bytes = key.getBytes();
         for (int i = 0; i < bytes.length; i++) {
-            bytes[i] = (byte) (bytes[i] * 5 + 1);
+            bytes[i] = (byte) (bytes[i] + 20);
         }
         stream.write(bytes);
         stream.close();
