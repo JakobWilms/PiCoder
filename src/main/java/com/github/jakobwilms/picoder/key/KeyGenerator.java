@@ -17,7 +17,7 @@ public class KeyGenerator {
 
     public KeyGenerator(String keyName) {
         this.keyName = keyName;
-        File file = new File("/usr/share/PiCoder/key" + getKeyName());
+        File file = new File("/usr/share/PiCoder/key/" + getKeyName());
         System.out.println(file.getAbsolutePath());
         if (!file.getParentFile().exists())
             //noinspection ResultOfMethodCallIgnored
