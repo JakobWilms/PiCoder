@@ -8,6 +8,10 @@
       echo "Couldn't find directory \"/usr/share\"!"
       exit
     )
+    sudo rm -r PiCoder || (
+      echo "Something went wrong. Please try again."
+      exit
+    )
     sudo git clone https://github.com/JakobWilms/PiCoder || (
       echo "Couldn't download sources. Is git installed?"
       exit
@@ -17,6 +21,7 @@
       exit
     )
     sudo chmod +x src/main/bash/*
+    sudo cp ./PiCoder/src/main/bash/picoder.sh picoder
   else
     echo "Installation cancelled."
     exit
