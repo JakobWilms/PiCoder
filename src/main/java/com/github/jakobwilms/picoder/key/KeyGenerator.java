@@ -38,6 +38,10 @@ public class KeyGenerator {
     }
 
     private void write(String key) throws IOException {
+        if (!getFile().exists()) {
+            //noinspection ResultOfMethodCallIgnored
+            getFile().createNewFile();
+        }
         FileOutputStream stream = new FileOutputStream(getFile());
         byte[] bytes = key.getBytes();
         stream.write(bytes);
