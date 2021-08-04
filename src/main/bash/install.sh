@@ -21,7 +21,7 @@
       exit
     )
     sudo chmod +x src/main/bash/*
-    sudo cp ./PiCoder/src/main/bash/picoder.sh picoder
+    sudo cp src/main/bash/picoder.sh /usr/bin/picoder
   else
     echo "Installation cancelled."
     exit
