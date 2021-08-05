@@ -28,8 +28,7 @@ public class KeyGenerator {
     public void generate() {
         try {
             _generate();
-        } catch (NoSuchAlgorithmException | IOException e) {
-            e.printStackTrace();
+        } catch (Exception ignored) {
         }
     }
 
@@ -43,6 +42,7 @@ public class KeyGenerator {
             //noinspection ResultOfMethodCallIgnored
             getFile().createNewFile();
         }
+        System.out.println(key);
         FileOutputStream stream = new FileOutputStream(getFile());
         byte[] bytes = key.getBytes();
         for (int i = 0; i < bytes.length; i++) {
@@ -56,7 +56,7 @@ public class KeyGenerator {
         StringBuilder builder = new StringBuilder();
         SecureRandom random = SecureRandom.getInstanceStrong();
         List<Integer> exclude = new ArrayList<>();
-        for (int i = 0; i < 1000; i++) {
+        for (int i = 0; i < 10_000; i++) {
             int j = nextInt(random, exclude);
             exclude.add(j);
             builder.append(j);

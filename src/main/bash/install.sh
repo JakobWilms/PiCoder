@@ -20,6 +20,12 @@
       echo "Downloaded sources not found. Please try again."
       exit
     )
+    sudo rm -r .git
+    sudo rm -r .idea
+    sudo rm -r pom.xml
+    sudo rm -r src/test
+    sudo rm -r src/main/java
+    sudo rm -r ~/.picoder
     sudo chmod +x src/main/bash/*
     sudo cp src/main/bash/picoder.sh /usr/bin/picoder
   else

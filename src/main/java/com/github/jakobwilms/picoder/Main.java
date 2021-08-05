@@ -1,7 +1,8 @@
 package com.github.jakobwilms.picoder;
 
+import com.github.jakobwilms.picoder.encode.EncodeUtils;
 import com.github.jakobwilms.picoder.encode.Encoder;
-import com.github.jakobwilms.picoder.key.KeyGenerator;
+import com.github.jakobwilms.picoder.key.KeyUtils;
 
 public class Main {
 
@@ -12,12 +13,11 @@ public class Main {
         }
         if (args.length == 5) {
             if (args[0].equals("encode")) {
-                Encoder encoder = new Encoder(args[1], args[2], args[3], args[4]);
+                EncodeUtils.encode(args[1], args[2], args[3], args[4]);
             }
         } else if (args.length == 2) {
             if (args[0].equals("generate-key")) {
-                KeyGenerator keyGenerator = new KeyGenerator(args[1]);
-                keyGenerator.generate();
+                KeyUtils.generate(args[1]);
             }
         }
     }

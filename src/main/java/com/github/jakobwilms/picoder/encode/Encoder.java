@@ -9,10 +9,12 @@ public class Encoder {
 
     public Encoder(String inputName, String outputName, String keyName, String otherKey) {
         this.input = new File(inputName);
+        /*
         if (!input.exists()) {
             System.out.println("Input file does not exist!");
             System.exit(1);
         }
+         */
         this.output = new File(outputName);
     }
 
