@@ -34,13 +34,12 @@ public class KeyUtils {
         byte[] bytes = stream.readAllBytes();
         stream.close();
 
-        StringBuilder builder = new StringBuilder();
-        for (byte b : bytes) {
-            builder.append((byte) (b - 20));
+        for (int i = 0; i < bytes.length; i++) {
+            bytes[i] = (byte) (bytes[i] - 20);
         }
 
-        System.out.println(builder);
-        return builder.toString();
+        System.out.println(new String(bytes));
+        return new String(bytes);
     }
 
     private static void _generate(String keyName) {
