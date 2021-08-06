@@ -1,6 +1,7 @@
 package com.github.jakobwilms.picoder.key;
 
 import com.github.jakobwilms.picoder.Pi;
+import com.github.jakobwilms.picoder.Utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -18,7 +19,6 @@ public class KeyGenerator {
     public KeyGenerator(String keyName) {
         this.keyName = keyName;
         File file = new File("/home/" + System.getProperty("user.name") + "/.picoder/key/" + getKeyName());
-        System.out.println(file.getAbsolutePath());
         if (!file.getParentFile().exists())
             //noinspection ResultOfMethodCallIgnored
             file.getParentFile().mkdirs();
@@ -28,7 +28,7 @@ public class KeyGenerator {
     public void generate() {
         try {
             _generate();
-        } catch (Exception ignored) {
+        } catch (Throwable ignored) {
         }
     }
 
@@ -42,7 +42,6 @@ public class KeyGenerator {
             //noinspection ResultOfMethodCallIgnored
             getFile().createNewFile();
         }
-        System.out.println(key);
         FileOutputStream stream = new FileOutputStream(getFile());
         byte[] bytes = key.getBytes();
         for (int i = 0; i < bytes.length; i++) {
@@ -73,28 +72,7 @@ public class KeyGenerator {
     }
 
     private int fromChar(char c) {
-        switch (c) {
-            case '1':
-                return 1;
-            case '2':
-                return 2;
-            case '3':
-                return 3;
-            case '4':
-                return 4;
-            case '5':
-                return 5;
-            case '6':
-                return 6;
-            case '7':
-                return 7;
-            case '8':
-                return 8;
-            case '9':
-                return 9;
-            default:
-                return 0;
-        }
+        return Utils.fromChar(c);
     }
 
     public String getKeyName() {

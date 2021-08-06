@@ -1,42 +1,20 @@
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.nio.charset.StandardCharsets;
-import java.util.Arrays;
-
 public class Test {
 
     public static void main(String[] args) {
-        String key = "0224215483257289";
-        File testFile = new File("/home/jakob/Desktop/testkey");
-        try {
-            //noinspection ResultOfMethodCallIgnored
-            testFile.createNewFile();
-            FileOutputStream stream = new FileOutputStream(testFile);
+        int i = 351;
+        int i2 = 38392;
 
-            byte[] bytes = key.getBytes();
-            System.out.println("bytes: " + Arrays.toString(bytes));
-            for (int i = 0; i < bytes.length; i++) {
-                bytes[i] = (byte) (bytes[i] + 20);
-            }
-            System.out.println("bytes +20: " + Arrays.toString(bytes));
-            stream.write(bytes);
-            stream.close();
+        int i3 = i ^ i2;
+        System.out.println(i3);
 
+        i3 ^= i2;
+        System.out.println(i3);
 
-            FileInputStream inputStream = new FileInputStream(testFile);
-            bytes = inputStream.readAllBytes();
-            System.out.println("bytes read: " + Arrays.toString(bytes));
-            stream.close();
+        i3 = i ^ i2;
+        i3 ^= i;
+        System.out.println(i3);
 
-            for (int i = 0; i < bytes.length; i++) {
-                bytes[i] = (byte) (bytes[i] - 20);
-            }
-
-            System.out.println("String: " + new String(bytes, StandardCharsets.UTF_8));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        System.out.println(5 % 2);
+        System.out.println(2 % 5);
     }
 }

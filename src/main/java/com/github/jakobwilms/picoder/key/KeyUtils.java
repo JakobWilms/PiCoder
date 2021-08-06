@@ -38,7 +38,6 @@ public class KeyUtils {
             bytes[i] = (byte) (bytes[i] - 20);
         }
 
-        System.out.println(new String(bytes));
         return new String(bytes);
     }
 
