@@ -105,6 +105,7 @@ public class Encoder {
     private String addKey() {
         StringBuilder builder = new StringBuilder();
 
+        System.out.println("length: " + otherKey.length());
         for (int i = getKey().length() - 1; i >= 0; i--) {
             int a = fromChar(getKey().charAt(i));
             int b = fromChar(getOtherKey().charAt(i));
