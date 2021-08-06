@@ -50,7 +50,7 @@ public class KeyUtils {
             System.out.println(Utils.timestamp() + "--- GENERATING KEY ---");
             KeyGenerator keyGenerator = new KeyGenerator(keyName);
             keyGenerator.generate();
-            System.out.println(Utils.timestamp() + "--- KEY GENERATED");
+            System.out.println(Utils.timestamp() + "--- KEY GENERATED ---");
         } catch (Throwable ignored) {
         }
     }

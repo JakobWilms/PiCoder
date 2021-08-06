@@ -23,6 +23,7 @@ public class EncodeUtils {
 
             System.out.println(Utils.timestamp() + "--- Loading files ---");
             File input = new File(inputName);
+            input = input.exists() ? input : new File(System.getProperty("user.dir") + inputName);
             File output = new File(outputName);
             System.out.println(Utils.timestamp() + "--- Files loaded ---");
 
@@ -31,8 +32,10 @@ public class EncodeUtils {
             String other = KeyUtils.load(otherKey);
             System.out.println(Utils.timestamp() + "--- Keys loaded");
 
-            if (!input.exists() || key.equals("") || other.equals(""))
+            if (!input.exists() || key.equals("") || other.equals("")) {
+                System.out.println(Utils.timestamp() + "--- INPUT FILE NOT FOUND (try absolut paths) OR KEY EMPTY ---");
                 return;
+            }
             if (output.exists())
                 output.delete();
             output.createNewFile();

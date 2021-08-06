@@ -13,9 +13,9 @@ public class Main {
 
         long time = System.currentTimeMillis();
 
-        System.out.println("-".repeat(20));
+        System.out.println("-".repeat(40));
         System.out.println("--- START --- AT " + time + " ---");
-        System.out.println("-".repeat(20));
+        System.out.println("-".repeat(40));
 
         if (args.length == 5) {
             if (args[0].equals("encode")) {
@@ -29,9 +29,9 @@ public class Main {
 
         long time2 = System.currentTimeMillis();
 
-        System.out.println("-".repeat(20));
+        System.out.println("-".repeat(40));
         System.out.println("--- END --- AT " + time2 + " ---");
         System.out.println("--- TOTAL TIME:  " + Utils.getTotalTime(time, time2) + " ---");
-        System.out.println("-".repeat(20));
+        System.out.println("-".repeat(40));
     }
 }
