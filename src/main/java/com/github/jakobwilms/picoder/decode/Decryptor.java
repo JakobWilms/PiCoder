@@ -54,6 +54,8 @@ public class Decryptor {
             }
         }
 
+        System.out.println(Arrays.toString(ints.toArray()));
+
         Byte[] fBytes = new Byte[ints.size()];
         System.out.println(Utils.timestamp() + "--- Decrypting bytes ---");
 
