@@ -40,7 +40,7 @@ public class EncodeUtils {
                 output.delete();
             output.createNewFile();
 
-            _encode0(input, output, key, otherKey);
+            _encode0(input, output, key, other);
 
             System.out.println(Utils.timestamp() + "--- END ENCODING ---");
         } catch (Throwable ignored) {

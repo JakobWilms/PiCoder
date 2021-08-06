@@ -38,7 +38,6 @@ public class Encoder {
             stream.close();
 
             System.out.println(Utils.timestamp() + "--- Generating seed ---");
-            System.out.println(getOtherKey().length());
             String seed = generateSeed(bytes);
             System.out.println(Utils.timestamp() + "--- Seed generated ---");
 
@@ -52,21 +51,14 @@ public class Encoder {
 
             System.out.println(Utils.timestamp() + "--- ENCODED FILE: " + getOutput().getAbsolutePath() + " ---");
         } catch (Throwable ignored) {
-            ignored.printStackTrace();
         }
     }
 
     private String generateSeed(byte[] bytes) {
-        try {
-            String key = addKey();
-            String checksum = generateChecksum(bytes);
+        String key = addKey();
+        String checksum = generateChecksum(bytes);
 
-            return add(key, checksum);
-        } catch (Throwable throwable) {
-            throwable.printStackTrace();
-        }
-        System.out.println("  33 ");
-        return "";
+        return add(key, checksum);
     }
 
     private String add(String a, String b) {
@@ -107,7 +99,6 @@ public class Encoder {
     private String addKey() {
         StringBuilder builder = new StringBuilder();
 
-        System.out.println("length: " + otherKey.length());
         for (int i = getKey().length() - 1; i >= 0; i--) {
             int a = fromChar(getKey().charAt(i));
             int b = fromChar(getOtherKey().charAt(i));
