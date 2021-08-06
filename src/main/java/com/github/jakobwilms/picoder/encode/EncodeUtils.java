@@ -30,7 +30,7 @@ public class EncodeUtils {
             System.out.println(Utils.timestamp() + "--- Loading keys ---");
             String key = KeyUtils.load(keyName);
             String other = KeyUtils.load(otherKey);
-            System.out.println(Utils.timestamp() + "--- Keys loaded");
+            System.out.println(Utils.timestamp() + "--- Keys loaded ---");
 
             if (!input.exists() || key.equals("") || other.equals("")) {
                 System.out.println(Utils.timestamp() + "--- INPUT FILE NOT FOUND (try absolut paths) OR KEY EMPTY ---");

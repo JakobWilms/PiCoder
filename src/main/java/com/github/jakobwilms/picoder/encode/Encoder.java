@@ -55,10 +55,16 @@ public class Encoder {
     }
 
     private String generateSeed(byte[] bytes) {
-        String key = addKey();
-        String checksum = generateChecksum(bytes);
+        try {
+            String key = addKey();
+            String checksum = generateChecksum(bytes);
 
-        return add(key, checksum);
+            return add(key, checksum);
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+        System.out.println("  33 ");
+        return "";
     }
 
     private String add(String a, String b) {
