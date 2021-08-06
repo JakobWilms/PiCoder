@@ -51,6 +51,8 @@ class Encryptor {
             builder.append(anInt).append("q");
             if (String.valueOf(anInt).length() > 10) {
                 System.out.println("> 10");
+                builder.append("q");
+                continue;
             }
             for (int j = String.valueOf(anInt).length(); j < 10; j++) {
                 builder.append(random.nextInt(10));

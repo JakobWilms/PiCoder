@@ -1,4 +1,4 @@
-package com.github.jakobwilms.picoder.encode;
+package com.github.jakobwilms.picoder.decode;
 
 import com.github.jakobwilms.picoder.SeedUtils;
 import com.github.jakobwilms.picoder.Utils;
@@ -6,31 +6,29 @@ import com.github.jakobwilms.picoder.Utils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.util.ArrayList;
-import java.util.List;
 
-public class Encoder {
+public class Decoder {
 
     private final File input;
     private final File output;
     private final String key;
     private final String otherKey;
 
-    public Encoder(File input, File output, String key, String otherKey) {
+    public Decoder(File input, File output, String key, String otherKey) {
         this.input = input;
         this.output = output;
         this.key = key;
         this.otherKey = otherKey;
     }
 
-    public void encode() {
+    public void decode() {
         try {
-            _encode();
+            _decode();
         } catch (Throwable ignored) {
         }
     }
 
-    private void _encode() {
+    private void _decode() {
         try {
             System.out.println(Utils.timestamp() + "--- Reading files ---");
 
@@ -38,19 +36,19 @@ public class Encoder {
             byte[] bytes = stream.readAllBytes();
             stream.close();
 
-            System.out.println(Utils.timestamp() + "--- Generating seed ---");
+            System.out.println(Utils.timestamp() + "--- Finding seed ---");
             String seed = SeedUtils.generateSeed(bytes, getKey(), getOtherKey());
-            System.out.println(Utils.timestamp() + "--- Seed generated ---");
+            System.out.println(Utils.timestamp() + "--- Seed found ---");
 
             System.out.println(Utils.timestamp() + "--- Starting output stream ---");
             FileOutputStream outputStream = new FileOutputStream(getOutput());
-            outputStream.write(EncryptUtils.encrypt(seed, bytes));
+            outputStream.write(DecryptUtils.decrypt(seed, bytes));
 
             outputStream.close();
             System.out.println(Utils.timestamp() + "--- Files written ---");
-            System.out.println(Utils.timestamp() + "--- Output stream closed ---");
+            System.out.println(Utils.timestamp() + "--- Output stream closed");
 
-            System.out.println(Utils.timestamp() + "--- ENCODED FILE: " + getOutput().getAbsolutePath() + " ---");
+            System.out.println(Utils.timestamp() + "--- DECODED FILE: " + getOutput().getAbsolutePath() + " ---");
         } catch (Throwable ignored) {
         }
     }
