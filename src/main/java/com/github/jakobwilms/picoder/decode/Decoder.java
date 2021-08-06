@@ -36,12 +36,9 @@ public class Decoder {
             byte[] bytes = stream.readAllBytes();
             stream.close();
 
-            System.out.println(getKey() + "\n\n\n" + getOtherKey());
-
             System.out.println(Utils.timestamp() + "--- Finding seed ---");
             String seed = SeedUtils.generateSeed(bytes, getKey(), getOtherKey());
             System.out.println(Utils.timestamp() + "--- Seed found ---");
-            System.out.println(seed);
 
             System.out.println(Utils.timestamp() + "--- Starting output stream ---");
             FileOutputStream outputStream = new FileOutputStream(getOutput());

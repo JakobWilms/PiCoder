@@ -31,6 +31,7 @@ public class DecryptUtils {
             System.out.println(Arrays.toString(r));
             return r;
         } catch (Throwable ignored) {
+            ignored.printStackTrace();
         }
         return new byte[0];
     }
