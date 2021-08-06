@@ -23,6 +23,7 @@ public class Decryptor {
         try {
             return _decrypt();
         } catch (Throwable ignored) {
+            ignored.printStackTrace();
         }
 
         return new Byte[0];
@@ -31,8 +32,10 @@ public class Decryptor {
     private Byte[] _decrypt() {
         System.out.println(Utils.timestamp() + "--- Generating final data ---");
 
-        if (bytes[0] != Globals.VERSION_1 || bytes[1] != Globals.VERSION_2 || bytes[2] != Globals.VERSION_3)
+        if (bytes[0] != Globals.VERSION_1 || bytes[1] != Globals.VERSION_2 || bytes[2] != Globals.VERSION_3) {
+            System.out.println(Utils.timestamp() + "--- WRONG VERSION!!! ---");
             return new Byte[0];
+        }
         List<Byte> bytes = new ArrayList<>();
         for (int i = 3; i < this.bytes.length; i++) {
             bytes.add(this.bytes[i]);
