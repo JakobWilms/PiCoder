@@ -44,13 +44,20 @@ public class Decryptor {
         System.out.println(Utils.timestamp() + "--- Filtering bytes ---");
         List<Integer> ints = new ArrayList<>();
         boolean q = false;
+        boolean b = false;
         for (Byte aByte : bytes) {
             if (aByte == "q".getBytes()[0]) {
                 q = !q;
+                b = false;
                 continue;
             }
             if (q) {
-                ints.add(Utils.fromChar(new String(new byte[]{aByte}).charAt(0)));
+                if (!b) {
+                    ints.add(Utils.fromChar(new String(new byte[]{aByte}).charAt(0)));
+                    b = true;
+                } else {
+                    ints.set(ints.size() - 1, 10 * ints.get(ints.size() - 1) + Utils.fromChar(new String(new byte[]{aByte}).charAt(0)));
+                }
             }
         }
 
