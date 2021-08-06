@@ -38,28 +38,34 @@ public class KeyGenerator {
     }
 
     private void write(String key) throws IOException {
+        System.out.println(Utils.timestamp() + "--- Writing key ---");
         if (!getFile().exists()) {
             //noinspection ResultOfMethodCallIgnored
             getFile().createNewFile();
         }
         FileOutputStream stream = new FileOutputStream(getFile());
         byte[] bytes = key.getBytes();
+        System.out.println(Utils.timestamp() + "--- Encoding key ---");
         for (int i = 0; i < bytes.length; i++) {
             bytes[i] = (byte) (bytes[i] + 20);
         }
         stream.write(bytes);
         stream.close();
+        System.out.println(Utils.timestamp() + "--- Key written ---");
     }
 
     private String getKey() throws NoSuchAlgorithmException {
+        System.out.println(Utils.timestamp() + "--- Initializing algorithms ---");
         StringBuilder builder = new StringBuilder();
         SecureRandom random = SecureRandom.getInstanceStrong();
         List<Integer> exclude = new ArrayList<>();
+        System.out.println(Utils.timestamp() + "--- Generating random numbers ---");
         for (int i = 0; i < 10_000; i++) {
             int j = nextInt(random, exclude);
             exclude.add(j);
             builder.append(j);
         }
+        System.out.println(Utils.timestamp() + "--- Random numbers generated ---");
         return builder.toString();
     }
 

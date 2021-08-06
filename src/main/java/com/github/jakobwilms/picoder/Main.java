@@ -1,7 +1,6 @@
 package com.github.jakobwilms.picoder;
 
 import com.github.jakobwilms.picoder.encode.EncodeUtils;
-import com.github.jakobwilms.picoder.encode.Encoder;
 import com.github.jakobwilms.picoder.key.KeyUtils;
 
 public class Main {
@@ -11,6 +10,13 @@ public class Main {
             System.out.println("Windows not supported yet!");
             System.exit(0);
         }
+
+        long time = System.currentTimeMillis();
+
+        System.out.println("-".repeat(20));
+        System.out.println("--- START --- AT " + time + " ---");
+        System.out.println("-".repeat(20));
+
         if (args.length == 5) {
             if (args[0].equals("encode")) {
                 EncodeUtils.encode(args[1], args[2], args[3], args[4]);
@@ -20,5 +26,12 @@ public class Main {
                 KeyUtils.generate(args[1]);
             }
         }
+
+        long time2 = System.currentTimeMillis();
+
+        System.out.println("-".repeat(20));
+        System.out.println("--- END --- AT " + time2 + " ---");
+        System.out.println("--- TOTAL TIME:  " + Utils.getTotalTime(time, time2) + " ---");
+        System.out.println("-".repeat(20));
     }
 }

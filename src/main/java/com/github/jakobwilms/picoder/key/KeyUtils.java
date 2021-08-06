@@ -1,8 +1,9 @@
 package com.github.jakobwilms.picoder.key;
 
+import com.github.jakobwilms.picoder.Utils;
+
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 public class KeyUtils {
@@ -27,6 +28,8 @@ public class KeyUtils {
     }
 
     private static String _load(String keyName) throws IOException {
+        System.out.println(Utils.timestamp() + "--- Reading key ---");
+
         File file = new File("/home/" + System.getProperty("user.name") + "/.picoder/key/" + keyName);
         if (!file.exists()) file = new File(keyName);
 
@@ -34,6 +37,7 @@ public class KeyUtils {
         byte[] bytes = stream.readAllBytes();
         stream.close();
 
+        System.out.println(Utils.timestamp() + "--- Decoding key ---");
         for (int i = 0; i < bytes.length; i++) {
             bytes[i] = (byte) (bytes[i] - 20);
         }
@@ -43,8 +47,10 @@ public class KeyUtils {
 
     private static void _generate(String keyName) {
         try {
+            System.out.println(Utils.timestamp() + "--- GENERATING KEY ---");
             KeyGenerator keyGenerator = new KeyGenerator(keyName);
             keyGenerator.generate();
+            System.out.println(Utils.timestamp() + "--- KEY GENERATED");
         } catch (Throwable ignored) {
         }
     }
