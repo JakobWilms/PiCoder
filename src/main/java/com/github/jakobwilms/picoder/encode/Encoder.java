@@ -38,6 +38,7 @@ public class Encoder {
             stream.close();
 
             System.out.println(Utils.timestamp() + "--- Generating seed ---");
+            System.out.println(getOtherKey().length());
             String seed = generateSeed(bytes);
             System.out.println(Utils.timestamp() + "--- Seed generated ---");
 
@@ -51,6 +52,7 @@ public class Encoder {
 
             System.out.println(Utils.timestamp() + "--- ENCODED FILE: " + getOutput().getAbsolutePath() + " ---");
         } catch (Throwable ignored) {
+            ignored.printStackTrace();
         }
     }
 
