@@ -30,7 +30,7 @@ public class DecodeUtils {
             System.out.println(Utils.timestamp() + "--- Loading keys ---");
             String key = KeyUtils.load(keyName);
             String other = KeyUtils.load(otherKey);
-            System.out.println(Utils.timestamp() + "--- Key loaded ---");
+            System.out.println(Utils.timestamp() + "--- Keys loaded ---");
 
             if (!input.exists() || key.equals("") || other.equals("")) {
                 System.out.println(Utils.timestamp() + "--- INPUT FILE NOT FOUND (try absolut paths) OR KEY EMPTY ---");
@@ -49,7 +49,7 @@ public class DecodeUtils {
 
     private static void _decode0(File input, File output, String key, String otherKey) {
         try {
-            System.out.println(Utils.timestamp() + "--- Initializing decoder");
+            System.out.println(Utils.timestamp() + "--- Initializing decoder ---");
             Decoder decoder = new Decoder(input, output, key, otherKey);
             decoder.decode();
         } catch (Throwable ignored) {

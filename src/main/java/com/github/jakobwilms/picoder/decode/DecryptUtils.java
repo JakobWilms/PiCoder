@@ -2,6 +2,8 @@ package com.github.jakobwilms.picoder.decode;
 
 import com.github.jakobwilms.picoder.Utils;
 
+import java.util.Arrays;
+
 public class DecryptUtils {
 
     public static byte[] decrypt(String seed, byte[] bytes) {
@@ -26,6 +28,7 @@ public class DecryptUtils {
                 r[i] = bytes1[i];
             }
             System.out.println(Utils.timestamp() + "--- Data decrypted ---");
+            System.out.println(Arrays.toString(r));
             return r;
         } catch (Throwable ignored) {
         }
