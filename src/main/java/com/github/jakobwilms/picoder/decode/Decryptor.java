@@ -4,6 +4,7 @@ import com.github.jakobwilms.picoder.Globals;
 import com.github.jakobwilms.picoder.Utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Decryptor {
@@ -23,7 +24,6 @@ public class Decryptor {
         try {
             return _decrypt();
         } catch (Throwable ignored) {
-            ignored.printStackTrace();
         }
 
         return new Byte[0];
@@ -64,6 +64,7 @@ public class Decryptor {
         }
 
         System.out.println(Utils.timestamp() + "--- Returning decrypted bytes ---");
+        System.out.println(Arrays.toString(fBytes));
         return fBytes;
     }
 
