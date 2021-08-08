@@ -61,7 +61,7 @@ public class Decryptor {
             }
         }
 
-        System.out.println(Arrays.toString(ints.toArray()));
+        System.out.println("Filtered: " + Arrays.toString(ints.toArray(new Integer[0])));
 
         Byte[] fBytes = new Byte[ints.size()];
         System.out.println(Utils.timestamp() + "--- Decrypting bytes ---");
@@ -73,7 +73,7 @@ public class Decryptor {
         }
 
         System.out.println(Utils.timestamp() + "--- Returning decrypted bytes ---");
-        System.out.println(Arrays.toString(fBytes));
+        System.out.println("Decrypted: " + Arrays.toString(fBytes));
         return fBytes;
     }
 

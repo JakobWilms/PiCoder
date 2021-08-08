@@ -32,6 +32,7 @@
     echo "Installation cancelled."
     exit
   fi
+  clear
 } || {
   echo "Something went wrong. Please check the following and try again!"
   echo "OS = Linux"

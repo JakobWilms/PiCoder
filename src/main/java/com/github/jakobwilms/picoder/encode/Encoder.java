@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class Encoder {
@@ -38,8 +39,12 @@ public class Encoder {
             byte[] bytes = stream.readAllBytes();
             stream.close();
 
+            System.out.println("In: " + new String(bytes));
+            System.out.println("In: " + Arrays.toString(bytes));
+
             System.out.println(Utils.timestamp() + "--- Generating seed ---");
             String seed = SeedUtils.generateSeed(bytes, getKey(), getOtherKey());
+            System.out.println("Seed: " + seed);
             System.out.println(Utils.timestamp() + "--- Seed generated ---");
 
             System.out.println(Utils.timestamp() + "--- Starting output stream ---");

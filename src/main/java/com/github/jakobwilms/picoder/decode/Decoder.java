@@ -6,6 +6,7 @@ import com.github.jakobwilms.picoder.Utils;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.Arrays;
 
 public class Decoder {
 
@@ -36,8 +37,12 @@ public class Decoder {
             byte[] bytes = stream.readAllBytes();
             stream.close();
 
+            System.out.println("In: " + new String(bytes));
+            System.out.println("In: " + Arrays.toString(bytes));
+
             System.out.println(Utils.timestamp() + "--- Finding seed ---");
             String seed = SeedUtils.generateSeed(bytes, getKey(), getOtherKey());
+            System.out.println("Seed: " + seed);
             System.out.println(Utils.timestamp() + "--- Seed found ---");
 
             System.out.println(Utils.timestamp() + "--- Starting output stream ---");

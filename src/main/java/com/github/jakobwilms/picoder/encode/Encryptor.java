@@ -4,6 +4,7 @@ import com.github.jakobwilms.picoder.Globals;
 import com.github.jakobwilms.picoder.Utils;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
@@ -36,6 +37,8 @@ class Encryptor {
                 ints[i] = encrypt(bytes[i], i);
             }
         }
+
+        System.out.println("Encrypted: " + Arrays.toString(ints));
 
         return getOut(ints);
     }
@@ -72,6 +75,7 @@ class Encryptor {
         }
 
         System.out.println(Utils.timestamp() + "--- Returning final bytes ---");
+        System.out.println("Final bytes: " + Arrays.toString(bytes.toArray(new Byte[0])));
         return bytes.toArray(new Byte[0]);
     }
 
