@@ -34,6 +34,7 @@ public class Decryptor {
 
         if (bytes[0] != Globals.VERSION_1 || bytes[1] != Globals.VERSION_2 || bytes[2] != Globals.VERSION_3) {
             System.out.println(Utils.timestamp() + "--- WRONG VERSION!!! ---");
+            System.exit(1);
             return new Byte[0];
         }
         List<Byte> bytes = new ArrayList<>();
@@ -80,8 +81,8 @@ public class Decryptor {
     private Byte decrypt(int number, int i) {
         i = i < seed.length() ? i : i % seed.length();
         int tmpSeed = Utils.fromChar(seed.charAt(i)) * 10 + Utils.fromChar(seed.charAt(i + 1)) + Utils.fromChar(seed.charAt(seed.length() - i - 1)) + Utils.fromChar(seed.charAt(seed.length() - i - 2)) * 10;
-        byte x = (byte) (number ^ tmpSeed);
-        return (byte) (x - 1);
+        int x = number - 1;
+        return (byte) (x ^ tmpSeed);
     }
 
     public String getSeed() {
